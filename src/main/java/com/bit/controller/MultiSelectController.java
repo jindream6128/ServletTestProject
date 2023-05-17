@@ -16,19 +16,9 @@ public class MultiSelectController implements ProcessController {
 		this.path = path;
 		this.redirect = redirect;
 	}
+
 	@Override
 	public ForWardController execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		//String table=request.getParameter("t");
-		Hashtable<String, Object>map=new Hashtable<String, Object>();
-		//map.put("table", table);
-
-
-		request.setAttribute("list", MultiSelectServiceImp.getMultiSelectService().selectEmp(map));
-		
-		return new ForWardController(path, redirect);
+		return null;
 	}
-	
-	
-
 }
