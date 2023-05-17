@@ -1,0 +1,47 @@
+root
+root
+---------------------------------
+ 과제를 위한 스키마 구성
+-- create database homeworkdb default character set utf8mb3 collate utf8mb3_general_ci;
+
+//계정 생성하기
+create user 'homedb'@'%' identified by 'homedb';
+//권한부여
+grant all privileges on *.* to 'homedb'@'%' with grant option;
+flush privileges
+-------------------------------
+Table총 3개 만들기 회원가입(User Table) 게시판(Board Table) 댓글(답글) (Coments)
+---------
+User -> id (varchar30 - pk) pass(varchar 20) name(varchar 10)
+show databases ;
+
+/*create database homeworkdb default character set utf8mb3 collate utf8mb3_general_ci;
+create user 'homedb'@'%' identified by 'homedb';
+grant all privileges on *.* to 'homedb'@'%' with grant option;
+flush privileges;*/
+
+use homeworkdb;
+
+show tables;
+
+CREATE TABLE USER(
+                     ID VARCHAR(30) PRIMARY KEY,
+                     PASS VARCHAR(20) NOT NULL,
+                     NAME VARCHAR(10) NOT NULL);
+
+select * from user;
+
+CREATE TABLE BOARD(
+                      NO int not null auto_increment primary key,
+                      TITLE varchar(30) not null,
+                      CATEGORY varchar(20) not null,
+                      WRITER varchar(10) not null,
+                      PASSWORD varchar(20) not null,
+                      CONTENTS varchar(1000),
+                      LIKECNT int(10),
+                      HATECNT int(10),
+                      HITCNT int(10),
+                      FILENAME varchar(50),
+                      regdate DATE);
+
+select * from BOARD;
