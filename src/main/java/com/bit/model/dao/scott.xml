@@ -3,10 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="매핑할 경로">
+<mapper namespace="com.bit.vo">
 
+    <!--mapper의 namespace는 id만, 파라미터 타입은 아님 ! -->
+    <insert id="insertsignup" parameterType="com.bit.vo.SignUpVO">
+        Insert INTO user(ID,PASS,NAME)
+        VALUES (#{id}, #{pass}, #{name})
+    </insert>
 
-
+    <select id="getPass" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT PASS
+        FROM USER WHERE ID = #{id};
+    </select>
 
 
 </mapper> <!--여기까지 매퍼-->

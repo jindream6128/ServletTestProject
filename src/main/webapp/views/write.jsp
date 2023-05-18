@@ -52,9 +52,7 @@
 </head>
 <body>
 
-
 	<jsp:include page="header.jsp"></jsp:include>
-
 
 	<!-- Page Header -->
 	<!-- Set your background image for this header on the line below. -->

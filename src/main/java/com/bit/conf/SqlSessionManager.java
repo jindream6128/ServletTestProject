@@ -10,7 +10,7 @@ public class SqlSessionManager {
 	public static SqlSessionFactory sqlSessionFactory;
 	static {
 
-		String resource="xml 경로";
+		String resource="com/bit/conf/configuration.xml";
 		Reader reader=null;
 
 		try {

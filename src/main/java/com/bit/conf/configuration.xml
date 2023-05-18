@@ -20,17 +20,17 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://localhost:3306/bitdb?serverTimezone=UTC" />
+                <property name="url" value="jdbc:mysql://localhost:3306/homeworkdb?serverTimezone=UTC" />
                 <!--Db정보-->
-                <property name="username" value="bit" />
-                <property name="password" value="bit" />
+                <property name="username" value="homedb" />
+                <property name="password" value="homedb" />
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
       <!--xml mapping-->
-        <mapper resource="" />
+        <mapper resource="com/bit/model/dao/scott.xml" />
 
     </mappers>
 </configuration>
