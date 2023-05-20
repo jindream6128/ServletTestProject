@@ -13,4 +13,6 @@ public interface MultiSelectDao {
     public String getPass(String id);
     public String getName(String id);
     public void insertBoard(BoardVO vo);
+    public List<BoardVO> selectAll(HashMap<String, Object> map);
+    public int totalCount(HashMap<String, Object> map); //페이징을 위해서 전체를 전체 갯수 세기
 }

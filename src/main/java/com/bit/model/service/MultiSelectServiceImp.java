@@ -35,5 +35,14 @@ public class MultiSelectServiceImp implements MultiSelectService{
 	public void insertBoard(BoardVO vo) {
 		MultiSelectDaoImp.getMultiSelectDao().insertBoard(vo);
 	}
+
+	public List<BoardVO> selectAll(HashMap<String, Object> map){
+		return MultiSelectDaoImp.getMultiSelectDao().selectAll(map);
+	}
+
+	public int totalCount(HashMap<String, Object> map){
+		return MultiSelectDaoImp.getMultiSelectDao().totalCount(map);
+	}
+
 }
 

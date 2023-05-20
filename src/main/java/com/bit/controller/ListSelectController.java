@@ -8,6 +8,7 @@ import java.io.IOException;
 public class ListSelectController implements ProcessController{
     private String path;
     private boolean redirect;
+    private PagingComponent pagingComponent = new PagingComponent();
 
     public ListSelectController(String path, boolean redirect) {
         super();
@@ -16,7 +17,9 @@ public class ListSelectController implements ProcessController{
     }
 
     @Override
-    public ForWardController execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public ForWardController execute(HttpServletRequest request, HttpServletResponse response){
+
+        pagingComponent.pagingCreate(request);
         return new ForWardController(path,redirect);
     }
 }

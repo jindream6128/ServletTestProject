@@ -53,7 +53,8 @@
                 },
                 success:function (data){
                     if(data.trim() == 'true'){
-                        window.location.replace("board.jsp");
+                        document.location.href='${pageContext.request.contextPath}/listSelect.do?cmd=listSelect'
+                        //window.location.replace("board.jsp");
                     }else{
                         $("input#inputid").val("");
                         $("input#inputpass").val("");

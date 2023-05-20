@@ -17,8 +17,8 @@ public class MapperServlet {
 				processController = new LoginSelectController("",false);
 				break;
 			case "listSelect":
-				System.out.println("listSelect");
 				processController = new ListSelectController("views/board.jsp",false);
+				System.out.println("listSelect");
 				break;
 			case "insertboard":
 				System.out.println("insertboard");

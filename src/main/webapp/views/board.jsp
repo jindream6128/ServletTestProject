@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC >
@@ -71,112 +72,83 @@
 		<div class="col-md-8">
 			<div class="board-toolbar" 	style="text-align: right; margin-bottom: 20px">
 
-				<a href="write.jsp" class="btn btn-primary btn-sm">
+				<a href="${pageContext.request.contextPath}/views/write.jsp" class="btn btn-primary btn-sm">
 					<i class="glyphicon glyphicon-pencil" style="margin-right: 15px"></i>쓰기</a>
 			</div>
 
-			<div class="list-group">
-				<a href="info.jsp" class="list-group-item">
+				<c:forEach var="i" items="${list}">
+				<a href="${pageContext.request.contextPath}/views/info.jsp" class="list-group-item">
 					<div class="board-title">
-						<span class="board-category">[ALGORITHM]</span>버블정렬
-						<span class="badge">New</span>
+						<span class="board-category">${i.CATEGORY}</span>${i.TITLE}
+						<span class="badge">오늘쓴 글이면 New 나오게 근데 할필요가 있을까?</span>
 					</div>
+					<div class="board-meta"
+						style="font-weight: 400; font-size: 1.2rem; color: #404040">
+						<p>
+							<i class="glyphicon glyphicon-user"></i> ${i.WRITER}
+							<i class="glyphicon glyphicon-comment"></i> [댓글수]
+							<i class="glyphicon glyphicon-ok"></i> [스크랩]
+							<i class="glyphicon glyphicon-time"></i>${i.regdate}
+						</p>
+					</div>
+				</a>
+				</c:forEach>
 
-					<div class="board-meta" style="font-weight: 400; font-size: 1.2rem; color: #404040">
-						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님
-							<i class="glyphicon glyphicon-comment"></i> 0
-							<i class="glyphicon glyphicon-ok"></i> 20
-							<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
-						</p>
-					</div>
-				</a>
-				<a href="info.jsp" class="list-group-item">
-					<div class="board-title">
-						<span class="board-category">[JAVASCRIPT]</span>
-							스크립트 태그를 마지막에 쓰는 이유<span class="badge">New</span>
-					</div>
-					<div class="board-meta"
-						style="font-weight: 400; font-size: 1.2rem; color: #404040">
-						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님
-							<i class="glyphicon glyphicon-comment"></i> 0
-							<i class="glyphicon glyphicon-ok"></i> 20
-							<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
-						</p>
-					</div>
-				</a>
-				<a href="info.jsp" class="list-group-item">
-					<div class="board-title">
-						<span class="board-category">[JAVA]</span>String과 StringBuffer의 차이
-						<span class="badge">New</span>
-					</div>
-					<div class="board-meta"
-						style="font-weight: 400; font-size: 1.2rem; color: #404040">
-						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님
-							<i class="glyphicon glyphicon-comment"></i> 0
-							<i class="glyphicon glyphicon-ok"></i> 38
-							<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
-						</p>
-					</div>
-				</a>
-				<a href="info.jsp" class="list-group-item">
-					<div class="board-title">
-						<span class="board-category">[JAVA]</span>
-						Length vs Length()
-					</div>
-					<div class="board-meta"
-						style="font-weight: 400; font-size: 1.2rem; color: #404040">
-						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님
-							<i class="glyphicon glyphicon-comment"></i> 0
-							<i class="glyphicon glyphicon-ok"></i> 11
-							<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
-						</p>
-					</div>
-				</a>
-				<a href="info.jsp" class="list-group-item">
-					<div class="board-title">
-						<span class="board-category">[JAVA]</span>
-						JAVA 8.0 함수형 프로그래밍 과 람다식
-					</div>
-					<div class="board-meta"
-						style="font-weight: 400; font-size: 1.2rem; color: #404040">
-						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님
-							<i class="glyphicon glyphicon-comment"></i> 0
-							<i class="glyphicon glyphicon-ok"></i> 32
-							<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
-						</p>
-					</div>
-				</a>
-				<a href="info.jsp" class="list-group-item">
-					<div class="board-title">
-						<span class="board-category">[DATABASE]</span>
-							성능고도화의 원리 
-					</div>
-					<div class="board-meta" href="#" style="font-weight: 400; font-size: 1.2rem; color: #404040">
-						<p>
-							<i class="glyphicon glyphicon-user"></i> 미립 님 
-							<i class="glyphicon glyphicon-comment"></i> 0 
-							<i class="glyphicon glyphicon-ok"></i> 17 
-							<i class="glyphicon glyphicon-time"></i> 2016.03.31 21:55
-						</p>
-					</div>
-				</a>
+
 			</div>
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<ul class="pagination">
-					<li><a href="#">이전</a></li>
-					<li><a href="#">1</a></li>
-					<li class="active"><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">.더보기.</a></li>
-					<li><a href="#">19</a></li>
-					<li><a href="#">다음</a></li>
+					<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=1">처음으로</a></li>
+
+					<c:choose>
+						<c:when test="${pageBean.currentBlock>1 }">
+						<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.startPage-1}">이전</a></li>
+						</c:when>
+
+						<c:otherwise>
+							<li><a href="#">이전</a></li>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach var = "i" begin="${pageBean.startPage}" end="${pageBean.endPage}">
+
+						<c:choose>
+							<c:when test="${i eq pageBean.currentPage }">
+								<li class="active"><a href="#">${i}</a></li>
+							</c:when>
+
+							<c:otherwise>
+								<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${i}">${i}</a></li>
+							</c:otherwise>
+						</c:choose>
+
+					</c:forEach>
+
+
+
+
+					<%--<c:choose>
+						<c:when test="${pageBean.totalPage>pageBean.currentPage}">
+							<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.currentPage+1}">다음</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="#">다음</a></li>
+						</c:otherwise>
+					</c:choose>--%>
+
+					<c:choose>
+						<c:when test="${pageBean.totalPage > pageBean.endPage }">
+							<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.endPage+1}">다음</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="#">다음</a></li>
+						</c:otherwise>
+					</c:choose>
+					<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.totalPage}">마지막으로</a></li>
+
+
+
 				</ul>
 			</div>
 		</div>

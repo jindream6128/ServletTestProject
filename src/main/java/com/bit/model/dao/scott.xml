@@ -26,5 +26,29 @@
         VALUES (#{TITLE},#{CATEGORY},#{WRITER},#{PASSWORD},#{CONTENTS},#{FILENAME})
     </insert>
 
+    <select id="selectAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select * from
+                     (select @rownum:=@rownum+1 rownumber, BOARD.*
+                      from BOARD
+                      where (@rownum:=0)=0
+                      <if test="qeury != null">
+                          and ${query} LIKE CONCAT('%', #{data}, '%')
+                      </if> order by no asc) rownumber
+        where rownumber between #{start} and #{end}
+    </select>
+
+    <select id="totalCount" resultType="int" parameterType="java.util.HashMap">
+        select count(*) from BOARD
+
+        <choose>
+            <when test="query != null and data != null">
+                <where>
+                    ${query} LIKE CONCAT('%',#{data},'%')
+                </where>
+            </when>
+        </choose>
+
+    </select>
+
 </mapper> <!--여기까지 매퍼-->
 

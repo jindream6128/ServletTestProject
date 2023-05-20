@@ -76,6 +76,34 @@ public class MultiSelectDaoImp implements MultiSelectDao{
 			sqlSession.close();
 		}
 	}
+
+	public List<BoardVO> selectAll(HashMap<String, Object> map){
+		SqlSession sqlSession = sessionFactory.openSession();
+		List<BoardVO> list =null;
+		try{
+			list = sqlSession.selectList("com.bit.vo.selectAll", map);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			return list;
+		}
+	}
+
+	@Override
+	public int totalCount(HashMap<String, Object> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		int cnt=0;
+		try{
+			cnt = sqlSession.selectOne("com.bit.vo.totalCount",map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+		return cnt;
+	}
 }
 
 

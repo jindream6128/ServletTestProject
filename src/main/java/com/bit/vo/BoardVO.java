@@ -85,6 +85,15 @@ public class BoardVO {
         this.FILENAME = FILENAME;
     }
 
-
-
+    public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, String regdate) {
+        super();
+        this.NO = NO;
+        this.TITLE = TITLE;
+        this.CATEGORY = CATEGORY;
+        this.WRITER = WRITER;
+        this.PASSWORD = PASSWORD;
+        this.CONTENTS = CONTENTS;
+        this.FILENAME = FILENAME;
+        this.regdate = regdate;
+    }
 }

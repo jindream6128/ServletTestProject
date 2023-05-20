@@ -46,8 +46,7 @@ public class InsertBoardController implements ProcessController{
             String content = multi.getParameter("brdcontent");
             String filename = multi.getOriginalFileName(file);
 
-           BoardVO vo = new BoardVO(nickname,category,pass,title,content,filename);
-
+           BoardVO vo = new BoardVO(title,category,nickname,pass,content,filename);
            /* MultiSelectServiceImp.getMultiSelectService().insertBoard(vo);*/
 
 //            System.out.println("fileFileName: " + fileFileName); 서버에 실제 업로드 된 이름
