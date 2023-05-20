@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC >
 <html>
@@ -52,7 +52,38 @@
 <script>
 	$(function(){
 		$("button#btnchk").click(function (){
-			$("form").submit();
+
+			var name = $("input#namebox").val(); //작성자
+			var category = $("select#categorybox").val(); //카테고리
+			var pass = $("input#brdpass").val(); //비밀번호
+			var title = $("input#brdtitle").val(); //제목
+			var content = $("textarea#brdcontent").val();//내용
+			var filename = $("input#InputFile")[0].files[0];//파일
+
+			var formData = new FormData();
+			formData.append("name",name);
+			formData.append("category",category);
+			formData.append("pass",pass);
+			formData.append("title",title);
+			formData.append("content",content);
+			formData.append("filename",filename);
+
+				console.log(formData)
+
+
+			$.ajax({
+				url:'${pageContext.request.contextPath}/insert.do?cmd=insertboard',
+				type:'POST',
+				data:formData,
+				processData:false,
+				contentType:false,
+				success:function (){
+					window.location.replace("board.jsp");
+				},
+				error:function (){
+					alert("error");
+				}
+			})
 
 		})
 	})
@@ -61,7 +92,7 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="../views/header.jsp"></jsp:include>
 
 	<!-- Page Header -->
 	<!-- Set your background image for this header on the line below. -->
@@ -79,15 +110,15 @@
 			</div>
 		</div>
 	</header>
-<form action="${pageContext.request.contextPath}/insertBoard.do?cmd=insertboard" method="post" enctype="multipart/form-data">
+
 	<div id="write-field">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<table>
 				<tr>
 					<td class="td1">카테고리</td>
-					<td class="td2"><select name="categorybox" class="form-control"
-						style="display: inline-block;" >
+					<td class="td2"><select name="category" class="form-control"
+						style="display: inline-block;" id = "categorybox">
 							<option value="">&nbsp;+ 선택해주세요</option>
 							<option value="">----------------------</option>
 							<option id ="ca1">Category1</option>
@@ -102,15 +133,14 @@
 							<div class="col-md-6 col-sm-6 col-xs-bskr">
 								<div class="input-title">작성자명</div>
 								<div class="input-forms">
-									<%--<input type="hidden" name="nick" value="${nickName}"/>--%>
-									<input size="20" type="text"  name="nick" value="${nickName}"
-										class="form-control input-sm input-name bskr-font user" readonly/>
+									<input size="20" type="text"  name="name" value="${nickName}" id="namebox"
+										class="form-control input-sm input-name bskr-font user" disabled/>
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-bskr">
 								<div class="input-title">비밀번호</div>
 								<div class="input-forms">
-									<input size="20" type="password" name="brdpass" value=""
+									<input size="20" type="password" name="pw" value="" id="brdpass"
 										class="form-control input-sm input-pwd bskr-font user" />
 								</div>
 							</div>
@@ -122,8 +152,8 @@
 				<tr>
 					<td class="td1">제목</td>
 					<td class="td2" valign="middle"><input type="text"
-						name="brdtitle" value=""
-						class="form-control input-sm bskr-font subject"/></td>
+						name="subject" value=""
+						class="form-control input-sm bskr-font subject" id="brdtitle"/></td>
 				</tr>
 
 
@@ -132,12 +162,12 @@
 				<table>
 					<tr>
 						<td class="td1"></td>
-						<td calss="td2"><textarea class="form-control col-sm-5" name="brdcontent"
+						<td calss="td2"><textarea class="form-control col-sm-5" id="brdcontent"
 								rows="20"></textarea></td>
 					</tr>
 					<tr>
 					<td class="td1"></td>
-						<td class="td2"><input type="file" name="InputFile"></td>
+						<td class="td2"><input type="file" id="InputFile"></td>
 					</tr>
 				</table>
 			</div>
@@ -151,7 +181,6 @@
 			</div>
 		</div>
 	</div>
-</form>
 
 	<!-- Footer -->
 	<footer>
@@ -183,6 +212,7 @@
 			</div>
 		</div>
 	</footer>
+
 
 </body>
 

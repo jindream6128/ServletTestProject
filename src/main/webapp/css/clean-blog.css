@@ -3,7 +3,6 @@
  * Copyright 2014 Start Bootstrap
  * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
  */
-
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
@@ -18,7 +17,7 @@ body {
     border-radius: 0;
     border-color: #EEEEED;
     font-size: 1rem;
-    font-family: 'Roboto', '¸¼Àº °íµñ', malgun gothic, 'µ¸¿ò', Dotum, 'Helvetica Neue', Helvetica, verdana, Arial, sans-serif;
+    font-family: 'Roboto', 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½', malgun gothic, 'ï¿½ï¿½ï¿½ï¿½', Dotum, 'Helvetica Neue', Helvetica, verdana, Arial, sans-serif;
   }
   .login-or {
     position: relative;
@@ -51,7 +50,7 @@ body {
   }
 p {
   line-height: 1.5;
-  margin-top: 20px 0;
+  margin-top: 20px;
   margin-left: 5px;
 }
 p a {

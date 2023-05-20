@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +36,42 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
+<script>
+    $(function(){
+        $("a#loginbtn").click(function (){
+            var id = $("input#inputid").val(); //id
+            var pass = $("input#inputpass").val(); //pass
+            $.ajax({
+                url:'${pageContext.request.contextPath}/login.do',
+                type:'POST',
+                data:{
+                    "cmd":'login',"id":id,"pass":pass
+                },
+                success:function (data){
+                    if(data.trim() == 'true'){
+                        window.location.replace("board.jsp");
+                    }else{
+                        $("input#inputid").val("");
+                        $("input#inputpass").val("");
+                        alert("로그인에 실패 하였혔습니다");
+                    }
+                },
+                error:function (){
+                    alert("error");
+                }
+            })
+
+        })
+    })
+
+
+
+</script>
+
 <body style="background-image: url(${pageContext.request.contextPath}/img/back.jpg)">
 
 <jsp:include page="header.jsp"></jsp:include>
@@ -47,21 +82,24 @@
                 SAMPLE SIGN IN</a>
             </h3>
 
-            <form role="form">
+            <form role="form" id="loginform">
                 <div>
                     <div class="form-group">
+                        <%--여기가 id box--%>
                         <input type="text" placeholder="ID " class="form-control"
-                               id="inputUsernameEmail" name="email"/>
+                               id="inputid" name="email"/>
 
                     </div>
                     <div class="form-group">
+                        <!--여기가 pass box-->
                         <!--<a class="pull-right" href="#">Esqueci a senha</a>-->
                         <input type="password" placeholder="PASSWORD " class="form-control"
-                               id="inputPassword" name="nome"/>
+                               id="inputpass" name="nome"/>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <a href="#" class="btn btn-sm btn-danger btn-block">SIGN IN</a>
+                            <!--여기가 로그인 버튼-->
+                            <a class="btn btn-sm btn-danger btn-block" id="loginbtn">SIGN IN</a>
                         </div>
                     </div>
                     <div class="login-or">
@@ -70,6 +108,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
+
                             <a href="signup.jsp" class="btn btn-sm btn-info btn-block">SIGN UP</a>
                         </div>
                     </div>

@@ -13,9 +13,18 @@
 
     <select id="getPass" parameterType="java.lang.String" resultType="java.lang.String">
         SELECT PASS
-        FROM USER WHERE ID = #{id};
+        FROM USER WHERE ID = #{id}
     </select>
 
+    <select id="getName" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT NAME
+        FROM USER WHERE ID = #{id}
+    </select>
+
+    <insert id="insertBoard" parameterType="com.bit.vo.BoardVO">
+        INSERT INTO BOARD(TITLE,CATEGORY,WRITER,PASSWORD,CONTENTS,FILENAME)
+        VALUES (#{TITLE},#{CATEGORY},#{WRITER},#{PASSWORD},#{CONTENTS},#{FILENAME})
+    </insert>
 
 </mapper> <!--여기까지 매퍼-->
 

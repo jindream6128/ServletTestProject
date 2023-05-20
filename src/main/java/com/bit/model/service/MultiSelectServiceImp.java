@@ -1,6 +1,7 @@
 package com.bit.model.service;
 
 import com.bit.model.dao.MultiSelectDaoImp;
+import com.bit.vo.BoardVO;
 import com.bit.vo.SignUpVO;
 
 
@@ -23,6 +24,16 @@ public class MultiSelectServiceImp implements MultiSelectService{
 	@Override
 	public String getPass(String id) {
 		return MultiSelectDaoImp.getMultiSelectDao().getPass(id);
+	}
+
+	@Override
+	public String getName(String id) {
+		return MultiSelectDaoImp.getMultiSelectDao().getName(id);
+	}
+
+	@Override
+	public void insertBoard(BoardVO vo) {
+		MultiSelectDaoImp.getMultiSelectDao().insertBoard(vo);
 	}
 }
 

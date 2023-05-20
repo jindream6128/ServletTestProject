@@ -6,9 +6,11 @@ root
 
 //계정 생성하기
 create user 'homedb'@'%' identified by 'homedb';
+
 //권한부여
 grant all privileges on *.* to 'homedb'@'%' with grant option;
 flush privileges
+
 -------------------------------
 Table총 3개 만들기 회원가입(User Table) 게시판(Board Table) 댓글(답글) (Coments)
 ---------

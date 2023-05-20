@@ -1,0 +1,21 @@
+    $(function(){
+        $("a#loginbtn").click(function (){
+            var id = $("input#inputid").val(); //id
+            var pass = $("input#inputpass").val(); //pass
+
+            $.ajax({
+                url:'${pageContext.request.contextPath}/signup.do',
+                type:'POST',
+                data:{
+                    "cmd":'',"id":id,"pass":pass
+                },
+                success:function (value){
+
+                },
+                error:function (){
+                    alert("error");
+                }
+            })
+
+        })
+    })
