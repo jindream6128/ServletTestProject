@@ -77,7 +77,8 @@
 			</div>
 
 				<c:forEach var="i" items="${list}">
-				<a href="${pageContext.request.contextPath}/views/info.jsp" class="list-group-item">
+					<%--이거누르면 info로 들어간다--%>
+					<a href="${pageContext.request.contextPath}/hit.do?cmd=hit&no=${i.NO}&job=info" class="list-group-item">
 					<div class="board-title">
 						<span class="board-category">${i.CATEGORY}</span>${i.TITLE}
 						<span class="badge">오늘쓴 글이면 New 나오게 근데 할필요가 있을까?</span>
@@ -88,6 +89,7 @@
 							<i class="glyphicon glyphicon-user"></i> ${i.WRITER}
 							<i class="glyphicon glyphicon-comment"></i> [댓글수]
 							<i class="glyphicon glyphicon-ok"></i> [스크랩]
+							<i class="glyphicon glyphicon-hit"></i> [조회수]
 							<i class="glyphicon glyphicon-time"></i>${i.regdate}
 						</p>
 					</div>
@@ -125,18 +127,6 @@
 
 					</c:forEach>
 
-
-
-
-					<%--<c:choose>
-						<c:when test="${pageBean.totalPage>pageBean.currentPage}">
-							<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.currentPage+1}">다음</a></li>
-						</c:when>
-						<c:otherwise>
-							<li><a href="#">다음</a></li>
-						</c:otherwise>
-					</c:choose>--%>
-
 					<c:choose>
 						<c:when test="${pageBean.totalPage > pageBean.endPage }">
 							<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.endPage+1}">다음</a></li>
@@ -146,8 +136,6 @@
 						</c:otherwise>
 					</c:choose>
 					<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect&page=${pageBean.totalPage}">마지막으로</a></li>
-
-
 
 				</ul>
 			</div>

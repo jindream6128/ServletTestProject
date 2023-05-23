@@ -6,7 +6,6 @@ import com.bit.vo.SignUpVO;
 
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 
 public class MultiSelectServiceImp implements MultiSelectService{
@@ -44,5 +43,17 @@ public class MultiSelectServiceImp implements MultiSelectService{
 		return MultiSelectDaoImp.getMultiSelectDao().totalCount(map);
 	}
 
+	@Override
+	public void hitcnt(int no) {
+			MultiSelectDaoImp.getMultiSelectDao().hitcnt(no);
+	}
+
+	public BoardVO selectinfo(int no){
+		return MultiSelectDaoImp.getMultiSelectDao().selectinfo(no);
+	}
+
+
 }
+
+
 

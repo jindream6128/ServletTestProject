@@ -16,7 +16,7 @@ p {
 }
 
 .pagination>.active>a, .pagination>.active>a:hover, .pagination>.active>a:focus
-	{
+{
 	z-index: 3;
 	color: #fff;
 	cursor: default;
@@ -76,13 +76,13 @@ p {
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-	.btn-primary.active, .open .dropdown-toggle.btn-primary {
+.btn-primary.active, .open .dropdown-toggle.btn-primary {
 	background-color: #282828;
 	border-color: #080808;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
-	.btn-primary.active, .open>.dropdown-toggle.btn-primary {
+.btn-primary.active, .open>.dropdown-toggle.btn-primary {
 	color: #fff;
 	background-color: gray;
 	border-color: gray;

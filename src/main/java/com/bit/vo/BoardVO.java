@@ -9,6 +9,15 @@ public class BoardVO {
     private String CONTENTS;
     private String FILENAME;
     private String regdate;
+    private int HIT;
+
+    public int getHIT() {
+        return HIT;
+    }
+
+    public void setHIT(int HIT) {
+        this.HIT = HIT;
+    }
 
     public int getNO() {
         return NO;
@@ -85,7 +94,18 @@ public class BoardVO {
         this.FILENAME = FILENAME;
     }
 
-    public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, String regdate) {
+    public BoardVO(String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, int HIT) {
+        super();
+        this.TITLE = TITLE;
+        this.CATEGORY = CATEGORY;
+        this.WRITER = WRITER;
+        this.PASSWORD = PASSWORD;
+        this.CONTENTS = CONTENTS;
+        this.FILENAME = FILENAME;
+        this.HIT = HIT;
+    }
+
+    public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, String regdate, int HIT) {
         super();
         this.NO = NO;
         this.TITLE = TITLE;
@@ -95,5 +115,6 @@ public class BoardVO {
         this.CONTENTS = CONTENTS;
         this.FILENAME = FILENAME;
         this.regdate = regdate;
+        this.HIT = HIT;
     }
 }

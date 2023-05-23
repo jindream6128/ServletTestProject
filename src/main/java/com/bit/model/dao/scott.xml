@@ -50,5 +50,12 @@
 
     </select>
 
+    <update id="Hitcnt" parameterType="int">
+        update board set HIT = HIT+1 where no = #{one}
+    </update>
+
+    <select id="selectinfo" parameterType="int" resultType="com.bit.vo.BoardVO">
+        select * from BOARD WHERE NO=#{one}
+    </select>
 </mapper> <!--여기까지 매퍼-->
 

@@ -104,6 +104,34 @@ public class MultiSelectDaoImp implements MultiSelectDao{
 		}
 		return cnt;
 	}
+
+	@Override
+	public void hitcnt(int no) {
+			SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.Hitcnt",no);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public BoardVO selectinfo(int no) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		BoardVO boardVO = null;
+		try {
+			boardVO = sqlSession.selectOne("com.bit.vo.selectinfo",no);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return boardVO;
+	}
 }
 
 

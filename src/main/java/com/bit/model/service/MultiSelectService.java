@@ -19,4 +19,6 @@ public interface MultiSelectService {
 
     public int totalCount(HashMap<String, Object> map); //페이징을 위해서 전체를 전체 갯수 세기
 
+    public void hitcnt(int no);
+    public BoardVO selectinfo(int no);
 }

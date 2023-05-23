@@ -24,7 +24,13 @@ public class MapperServlet {
 				System.out.println("insertboard");
 				processController = new InsertBoardController("listSelect.do?cmd=listSelect",true);
 				break;
-
+			case "hit":
+				System.out.println("hit");
+				processController = new HitController("",true);
+				break;
+			case "info":
+				System.out.println("info");
+				processController = new InfoController("",true);
 		}
 
 		
