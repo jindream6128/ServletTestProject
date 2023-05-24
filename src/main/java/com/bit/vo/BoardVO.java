@@ -10,6 +10,33 @@ public class BoardVO {
     private String FILENAME;
     private String regdate;
     private int HIT;
+    private int LIKECNT;
+    private int HATECNT;
+    private int SCRAPCNT;
+
+    public int getLIKECNT() {
+        return LIKECNT;
+    }
+
+    public void setLIKECNT(int LIKECNT) {
+        this.LIKECNT = LIKECNT;
+    }
+
+    public int getHATECNT() {
+        return HATECNT;
+    }
+
+    public void setHATECNT(int HATECNT) {
+        this.HATECNT = HATECNT;
+    }
+
+    public int getSCRAPCNT() {
+        return SCRAPCNT;
+    }
+
+    public void setSCRAPCNT(int SCRAPCNT) {
+        this.SCRAPCNT = SCRAPCNT;
+    }
 
     public int getHIT() {
         return HIT;
@@ -103,6 +130,22 @@ public class BoardVO {
         this.CONTENTS = CONTENTS;
         this.FILENAME = FILENAME;
         this.HIT = HIT;
+    }
+
+    public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, String regdate, int HIT, int LIKECNT, int HATECNT, int SCRAPCNT) {
+        super();
+        this.NO = NO;
+        this.TITLE = TITLE;
+        this.CATEGORY = CATEGORY;
+        this.WRITER = WRITER;
+        this.PASSWORD = PASSWORD;
+        this.CONTENTS = CONTENTS;
+        this.FILENAME = FILENAME;
+        this.regdate = regdate;
+        this.HIT = HIT;
+        this.LIKECNT = LIKECNT;
+        this.HATECNT = HATECNT;
+        this.SCRAPCNT = SCRAPCNT;
     }
 
     public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, String regdate, int HIT) {

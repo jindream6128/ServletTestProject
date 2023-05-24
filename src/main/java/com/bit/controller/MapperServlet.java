@@ -44,6 +44,9 @@ public class MapperServlet {
 				//System.out.println("modify");
 				processController = new ModifyController("list.do?cmd=listSelect",true);
 				break;
+			case "emotion":
+				processController = new EmotionController("",false);
+				break;
 		}
 
 		

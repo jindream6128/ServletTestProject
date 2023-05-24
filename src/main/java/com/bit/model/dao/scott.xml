@@ -72,5 +72,45 @@ set TITLE=#{TITLE}, CATEGORY=#{CATEGORY}, WRITER=#{WRITER}, PASSWORD=#{PASSWORD}
     FILENAME=#{FILENAME} WHERE NO=#{NO}
 
     </update>
+
+    <select id="getAction" parameterType="java.util.HashMap" resultType="java.lang.String">
+        SELECT ACTION FROM GNB WHERE BOARD_NO=#{no} and USER_ID=#{id}
+    </select>
+    
+    <insert id="insertGNB" parameterType="java.util.HashMap">
+        INSERT INTO GNB(board_no, user_id, action) VALUES (#{no}, #{id},#{action})
+    </insert>
+
+    <update id="updateEmotioncnt" parameterType="java.util.HashMap">
+        UPDATE BOARD
+        <if test="action == 'like'">
+            SET LIKECNT = LIKECNT + 1, HATECNT = HATECNT - 1 WHERE NO = #{no}
+        </if>
+        <if test="action == 'hate'">
+            SET HATECNT = HATECNT + 1, LIKECNT = LIKECNT - 1 WHERE NO = #{no}
+        </if>
+    </update>
+    
+    <update id="updateEmotionAction" parameterType="java.util.HashMap">
+        UPDATE GNB
+        <if test="action eq 'like'">
+            set ACTION="like" WHERE BOARD_NO = #{no} and USER_ID = #{id}
+        </if>
+        <if test="action eq 'hate'">
+            set ACTION="hate" WHERE BOARD_NO = #{no} and USER_ID = #{id}
+        </if>
+    </update>
+
+    <update id="updateFirstEmotionCnt" parameterType="java.util.HashMap">
+        UPDATE BOARD
+        <if test="action eq 'like'">
+            set LIKECNT=LIKECNT+1 where NO=#{no}
+        </if>
+        <if test="action eq 'hate'">
+            set HATECNT=HATECNT+1 where NO=#{no}
+        </if>
+    </update>
+
+
 </mapper> <!--여기까지 매퍼-->
 

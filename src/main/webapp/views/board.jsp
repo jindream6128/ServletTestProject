@@ -89,7 +89,7 @@
 							<i class="glyphicon glyphicon-user"></i> ${i.WRITER}
 							<i class="glyphicon glyphicon-comment"></i> [댓글수]
 							<i class="glyphicon glyphicon-ok"></i> [스크랩]
-							<i class="glyphicon glyphicon-hit"></i> [조회수]
+							<i class="glyphicon glyphicon-hit"></i> ${i.HIT}
 							<i class="glyphicon glyphicon-time"></i>${i.regdate}
 						</p>
 					</div>

@@ -51,6 +51,54 @@
 	$(function(){
 	$("a#loginbtn").click(function (){
 </script>--%>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(function (){
+	$("#like").click(function (){
+		console.log(this.id);
+		$.ajax({
+			url:'${pageContext.request.contextPath}/emotion.do',
+			type:'POST',
+			data:{
+				"cmd":"emotion","id":"${id}","no":${info.NO},"action":"like"
+			},
+			success:function (data){
+				if(data.trim() == 'true'){
+					alert("좋아요/싫어요 버튼을 정상 클릭 하셨습니다.");
+					location.reload();
+				}else{
+					alert("눌러진 버튼 입니다.")
+				}
+			},
+			error:function (){
+				console.log("error");
+			}
+		})
+	});
+	$("#hate").click(function (){
+		console.log(this.id);
+		$.ajax({
+			url:'${pageContext.request.contextPath}/emotion.do',
+			type:'POST',
+			data:{
+				"cmd":"emotion","id":"${id}","no":${info.NO},"action":"hate"
+			},
+			success:function (data){
+				if(data.trim() == 'true'){
+					alert("좋아요/싫어요 버튼을 정상 클릭 하셨습니다.");
+					location.reload();
+				}else{
+					alert("눌러진 버튼 입니다.")
+				}
+			},
+			error:function (){
+				console.log("error");
+			}
+		})
+	});
+});
+</script>
+
 </head>
 <body>
 
@@ -88,8 +136,8 @@
 						<i class="glyphicon glyphicon-comment"></i> 0
 						<i class="glyphicon glyphicon-ok"></i> 20 
 						<i class="glyphicon glyphicon-time"></i> ${info.regdate}
-					    <i class="glyphicon glyphicon-thumbs-up"></i> 0
-						<i class="glyphicon glyphicon-thumbs-down"></i> 0
+					    <i class="glyphicon glyphicon-thumbs-up"></i> ${info.LIKECNT}
+						<i class="glyphicon glyphicon-thumbs-down"></i> ${info.HATECNT}
 					</p>
 				</div>
 				<div class="clear"></div>
@@ -98,11 +146,12 @@
 				<span class="board-contents">
 					${info.CONTENTS} </span>
 				<p style="text-align: center; margin-top: 30px">
-					<button class="btn btn-success">
-						<i class="glyphicon glyphicon-thumbs-up"></i>공감
+					<%--해당 버튼을 눌렀을때 그거에 맞는 함수 불러주기--%>
+					<button class="btn btn-success" id="like">
+						<i class="glyphicon glyphicon-thumbs-up"></i>좋아요
 					</button>
-					<button class="btn btn-warning">
-						<i class="glyphicon glyphicon-thumbs-down"></i>비공감
+					<button class="btn btn-warning" id="hate">
+						<i class="glyphicon glyphicon-thumbs-down"></i>싫어요
 					</button>
 				</p>
 			</div>

@@ -172,6 +172,77 @@ public class MultiSelectDaoImp implements MultiSelectDao{
 			sqlSession.close();
 		}
 	}
+
+	@Override
+	public String getAction(HashMap<String, Object> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		String Action = null;
+		try {
+			Action = sqlSession.selectOne("com.bit.vo.getAction",map).toString();
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return Action;
+	}
+
+	@Override
+	public void insertGNB(HashMap<String, Object> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try{
+			sqlSession.insert("com.bit.vo.insertGNB", map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void updateEmotioncnt(HashMap<String, Object> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.updateEmotioncnt",map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void updateFirstEmotionCnt(HashMap<String, Object> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.updateFirstEmotionCnt",map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void updateEmotionAction(HashMap<String, Object> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.updateEmotionAction",map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
 }
 
 

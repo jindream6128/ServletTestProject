@@ -66,6 +66,31 @@ public class MultiSelectServiceImp implements MultiSelectService{
 	public void modifyBoard(BoardVO vo) {
 		MultiSelectDaoImp.getMultiSelectDao().modifyBoard(vo);
 	}
+
+	@Override
+	public String getAction(HashMap<String, Object> map) {
+		return MultiSelectDaoImp.getMultiSelectDao().getAction(map);
+	}
+
+	@Override
+	public void insertGNB(HashMap<String, Object> map) {
+		MultiSelectDaoImp.getMultiSelectDao().insertGNB(map);
+	}
+
+	@Override
+	public void updateEmotioncnt(HashMap<String, Object> map) {
+		MultiSelectDaoImp.getMultiSelectDao().updateEmotioncnt(map);
+	}
+
+	@Override
+	public void updateEmotionAction(HashMap<String, Object> map) {
+		MultiSelectDaoImp.getMultiSelectDao().updateEmotionAction(map);
+	}
+
+	@Override
+	public void updateFirstEmotionCnt(HashMap<String, Object> map) {
+		MultiSelectDaoImp.getMultiSelectDao().updateFirstEmotionCnt(map);
+	}
 }
 
 

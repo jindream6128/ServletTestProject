@@ -29,7 +29,9 @@ public class LoginSelectController implements ProcessController{
         if(dbPass!=null && pass.equals(dbPass)){
             //request.getSession().setAttribute("id",id);
             request.getSession().setAttribute("nickName",nickName);
-            request.getSession().setMaxInactiveInterval(60*10);
+            request.getSession().setAttribute("id",id);//id도 넣기
+
+            request.getSession().setMaxInactiveInterval(60*10*10);
             request.setAttribute("loginState","true");
         }else{
             request.setAttribute("loginState","false");

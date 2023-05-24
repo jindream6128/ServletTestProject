@@ -36,4 +36,17 @@ public interface MultiSelectService {
     public void modifyBoard(BoardVO vo);
 
 
+    //id랑 no로 action 가져오기
+    public String getAction(HashMap<String,Object> map);
+
+    //GNB table에 넣기
+    public void insertGNB(HashMap<String,Object> map);
+
+    //좋아요 싫어요 수
+    public void updateEmotioncnt(HashMap<String,Object>map);
+
+    //GNB테이블 변경 -> Good인데 누르면 -> Good떨구고 bad 늘리기
+    public void updateEmotionAction(HashMap<String,Object> map);
+    //최초의 조회수 올릴때
+    public void updateFirstEmotionCnt(HashMap<String,Object>map);
 }
