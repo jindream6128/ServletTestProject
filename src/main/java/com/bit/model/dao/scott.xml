@@ -57,5 +57,20 @@
     <select id="selectinfo" parameterType="int" resultType="com.bit.vo.BoardVO">
         select * from BOARD WHERE NO=#{one}
     </select>
+
+    <select id="getboardPass" parameterType="int" resultType="java.lang.String">
+        select PASSWORD from BOARD WHERE NO = #{one}
+    </select>
+
+    <delete id="deleteBoardone" parameterType="int">
+        delete from board where no =#{one}
+    </delete>
+    
+    <update id="modifyBoard" parameterType="com.bit.vo.BoardVO">
+UPDATE BOARD
+set TITLE=#{TITLE}, CATEGORY=#{CATEGORY}, WRITER=#{WRITER}, PASSWORD=#{PASSWORD}, CONTENTS=#{CONTENTS},
+    FILENAME=#{FILENAME} WHERE NO=#{NO}
+
+    </update>
 </mapper> <!--여기까지 매퍼-->
 

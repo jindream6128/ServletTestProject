@@ -132,6 +132,46 @@ public class MultiSelectDaoImp implements MultiSelectDao{
 		}
 		return boardVO;
 	}
+
+	@Override
+	public String getboardPass(int no) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		String dbBoardPass = null;
+		try{
+			dbBoardPass = sqlSession.selectOne("com.bit.vo.getboardPass", no);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return dbBoardPass;
+	}
+
+	@Override
+	public void deleteBoardone(int no) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.delete("com.bit.vo.deleteBoardone",no);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void modifyBoard(BoardVO vo) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.modifyBoard",vo);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
 }
 
 

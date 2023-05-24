@@ -117,4 +117,30 @@ public class BoardVO {
         this.regdate = regdate;
         this.HIT = HIT;
     }
+
+    public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, int HIT) {
+        this.NO = NO;
+        this.TITLE = TITLE;
+        this.CATEGORY = CATEGORY;
+        this.WRITER = WRITER;
+        this.PASSWORD = PASSWORD;
+        this.CONTENTS = CONTENTS;
+        this.FILENAME = FILENAME;
+        this.HIT = HIT;
+    }
+
+    @Override
+    public String toString() {
+        return "BoardVO{" +
+                "NO=" + NO +
+                ", TITLE='" + TITLE + '\'' +
+                ", CATEGORY='" + CATEGORY + '\'' +
+                ", WRITER='" + WRITER + '\'' +
+                ", PASSWORD='" + PASSWORD + '\'' +
+                ", CONTENTS='" + CONTENTS + '\'' +
+                ", FILENAME='" + FILENAME + '\'' +
+                ", regdate='" + regdate + '\'' +
+                ", HIT=" + HIT +
+                '}';
+    }
 }

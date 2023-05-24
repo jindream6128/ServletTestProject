@@ -13,24 +13,37 @@ public class MapperServlet {
 				processController = new SignUpController("",false);
 				break;
 			case "login":
-				System.out.println("loginselect");
+				//System.out.println("loginselect");
 				processController = new LoginSelectController("",false);
 				break;
 			case "listSelect":
 				processController = new ListSelectController("views/board.jsp",false);
-				System.out.println("listSelect");
+				//System.out.println("listSelect");
 				break;
 			case "insertboard":
-				System.out.println("insertboard");
+				//System.out.println("insertboard");
 				processController = new InsertBoardController("listSelect.do?cmd=listSelect",true);
 				break;
 			case "hit":
-				System.out.println("hit");
+				//System.out.println("hit");
 				processController = new HitController("",true);
 				break;
 			case "info":
-				System.out.println("info");
+				//System.out.println("info");
 				processController = new InfoController("",true);
+				break;
+			case "pass":
+				//System.out.println("pass");
+				processController = new PasswordController("",true); //로그인에 성공할수도 실패할수도
+				break;
+			case "delete":
+				//System.out.println("delete");
+				processController = new DeleteController("list.do?cmd=listSelect",true);
+				break;
+			case "modify":
+				//System.out.println("modify");
+				processController = new ModifyController("list.do?cmd=listSelect",true);
+				break;
 		}
 
 		

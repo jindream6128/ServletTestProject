@@ -78,7 +78,7 @@
 		<div class="list-group">
 			<div class="list-group-item board-title">
 				<div class="board-title">
-					<span class="board-category">[${info.CATEGORY}}]</span><a href="#">
+					<span class="board-category">[${info.CATEGORY}]</span><a href="#">
 						${info.TITLE} </a>
 				</div>
 				<div class="board-meta"
@@ -108,8 +108,8 @@
 			</div>
 			<div class="bottom" style="margin: 10px;margin-top: 20px; text-align: right">
 				<a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect" class="btn btn-default btn-xs pull-left">목록으로</a>
-				<a href="#" class="btn btn-default btn-xs">수정</a> 
-				<a href="#" target="_action_frame_bbs" class="btn btn-default btn-xs">삭제</a>
+				<a href="${pageContext.request.contextPath}/views/Password.jsp?job=modify&no=${info.NO}" class="btn btn-default btn-xs">수정</a>
+				<a href="${pageContext.request.contextPath}/views/Password.jsp?job=del&no=${info.NO}" class="btn btn-default btn-xs">삭제</a>
 				<a href="#" class="btn btn-default btn-xs">답변</a>
 				<a href="#" class="btn btn-default btn-xs">스크랩</a> 
 			</div>

@@ -23,10 +23,12 @@ public class HitController implements ProcessController{
         String job = request.getParameter("job"); //info
         int no = Integer.parseInt(request.getParameter("no")); //게시글 번호
 
+        System.out.println("job: "+job);
+        System.out.println("no: "+no);
         MultiSelectServiceImp.getMultiSelectService().hitcnt(no);
 
         path = "info.do?cmd=info&no="+no+"&job="+job;
-        redirect= true;
+        redirect= false;
         return new ForWardController(path,redirect);
     }
 }

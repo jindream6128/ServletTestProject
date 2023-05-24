@@ -1,5 +1,4 @@
-<%@ taglib prefix="th" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC >
@@ -55,7 +54,6 @@
 	$(function(){
 		$("button#btnchk").click(function (){
 			$("form").submit();
-
 		})
 	})
 
@@ -81,7 +79,7 @@
 			</div>
 		</div>
 	</header>
-<form action="${pageContext.request.contextPath}/insertBoard.do?cmd=insertboard" method="post" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/insertBoard.do?cmd=modify&no=${info.NO}" method="post" enctype="multipart/form-data">
 	<div id="write-field">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
@@ -90,13 +88,29 @@
 					<td class="td1">카테고리</td>
 					<td class="td2"><select name="categorybox" class="form-control"
 						style="display: inline-block;" >
-							<option value="">선택해주세요</option>
+							<option value=""> 선택해주세요</option>
 							<option value="">----------------------</option>
-						<option id ="ca1">Java</option>
-						<option id ="ca2">Spring</option>
-						<option id ="ca3">Algorithm</option>
-						<option id ="ca4">Python</option>
-						<option id ="ca5">JavaScript</option>
+						<c:choose>
+							<c:when test="${info.CATEGORY == 'Java'}">
+								<option id ="ca1" selected>Java</option>
+							</c:when>
+							<c:when test="${info.CATEGORY == 'Spring'}">
+								<option id ="ca2" selected>Spring</option>
+							</c:when>
+							<c:when test="${info.CATEGORY == 'Algorithm'}">
+								<option id ="ca3" selected>Algorithm</option>
+							</c:when>
+							<c:when test="${info.CATEGORY == 'Python'}">
+								<option id ="ca4" selected>Python</option>
+							</c:when>
+							<c:when test="${info.CATEGORY == 'JavaScript'}">
+								<option id ="ca5" selected>JavaScript</option>
+							</c:when>
+							<c:otherwise>
+								<option id ="default" selected>선택</option>
+							</c:otherwise>
+						</c:choose>
+
 					</select></td>
 				</tr>
 
@@ -114,8 +128,9 @@
 							<div class="col-md-6 col-sm-6 col-xs-bskr">
 								<div class="input-title">비밀번호</div>
 								<div class="input-forms">
-									<input size="20" type="password" name="brdpass" value=""
+									<input size="20" type="password" name="brdpass" value="${info.PASSWORD}"
 										class="form-control input-sm input-pwd bskr-font user" />
+									<input type="hidden" name="hitcnt" value="${info.HIT}">
 								</div>
 							</div>
 						</div>
@@ -125,9 +140,8 @@
 
 				<tr>
 					<td class="td1">제목</td>
-					<td class="td2" valign="middle"><input type="text"
-						name="brdtitle" value=""
-						class="form-control input-sm bskr-font subject"/></td>
+					<td class="td2" valign="middle">
+					<input type="text" name="brdtitle" value="${info.TITLE}" class="form-control input-sm bskr-font subject"/></td>
 				</tr>
 
 
@@ -137,7 +151,7 @@
 					<tr>
 						<td class="td1"></td>
 						<td calss="td2"><textarea class="form-control col-sm-5" name="brdcontent"
-								rows="20"></textarea></td>
+								rows="20">${info.CONTENTS}</textarea></td>
 					</tr>
 					<tr>
 					<td class="td1"></td>

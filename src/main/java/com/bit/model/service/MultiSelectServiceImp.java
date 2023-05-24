@@ -52,7 +52,20 @@ public class MultiSelectServiceImp implements MultiSelectService{
 		return MultiSelectDaoImp.getMultiSelectDao().selectinfo(no);
 	}
 
+	@Override
+	public String getboardPass(int no) {
+		return MultiSelectDaoImp.getMultiSelectDao().getboardPass(no);
+	}
 
+	@Override
+	public void deleteBoardone(int no) {
+		MultiSelectDaoImp.getMultiSelectDao().deleteBoardone(no);
+	}
+
+	@Override
+	public void modifyBoard(BoardVO vo) {
+		MultiSelectDaoImp.getMultiSelectDao().modifyBoard(vo);
+	}
 }
 
 

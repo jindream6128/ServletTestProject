@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class InfoController implements ProcessController {
+public class DeleteController implements ProcessController{
     private String path;
     private boolean redirect;
 
-    public InfoController(String path, boolean redirect) {
+    public DeleteController(String path, boolean redirect) {
         super();
         this.path = path;
         this.redirect = redirect;
@@ -20,17 +20,9 @@ public class InfoController implements ProcessController {
     @Override
     public ForWardController execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int no = Integer.parseInt(request.getParameter("no"));
-        String job = request.getParameter("job");
 
-        request.setAttribute("info", MultiSelectServiceImp.getMultiSelectService().selectinfo(no));
-        redirect = false;
+        MultiSelectServiceImp.getMultiSelectService().deleteBoardone(no);
 
-        if(job.equals("modify")){
-            path = "views/modify.jsp?no="+no+"&job="+job;
-        }
-        if(job.equals("info")){
-            path = "views/info.jsp?no="+no+"&job="+job;
-        }
-        return new ForWardController(path, false);
+        return new ForWardController(path,redirect);
     }
 }
