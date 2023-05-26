@@ -1,5 +1,7 @@
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC >
 <html>
 
@@ -67,39 +69,45 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="list-group col-md-12">
-				<a class="list-group-item list-group-item-warning">½ºÅ©·¦ÇÑ °Ô½Ã±Û</a>
-				<a href="info.jsp" class="list-group-item">
+				<a class="list-group-item list-group-item-warning">ìŠ¤í¬ëž©í•œ ê²Œì‹œê¸€</a>
+
+				<c:forEach var="i" items="${page}">
+					<a href="${pageContext.request.contextPath}/hit.do?cmd=hit&no=${i.NO}&job=info" class="list-group-item">
 					<div>
 					<div class="board-title">
-						<span class="board-category">[ALGORITHM]</span> ¹öºíÁ¤·Ä <span
-							class="badge">New</span>
-						<button class="pull-right" style="margin-top: 10px">»èÁ¦</button>	
+						<span class="board-category">${i.CATEGORY}</span>${i.TITLE}
+						<c:if test="${i.newChk == 'Y'}">
+							<span class="badge">new</span>
+						</c:if>
+						<button class="pull-right" style="margin-top: 10px">ì‚­ì œ</button>	
 					</div>
 					<div class="board-meta"
 						style="font-weight: 400; font-size: 1.2rem; color: #404040">
 						<p>
-							<i class="glyphicon glyphicon-user"></i> ¹Ì¸³ ´Ô
-							<i class="glyphicon glyphicon-comment"></i> 0
-							<i class="glyphicon glyphicon-ok"></i>20
-							<i class="glyphicon glyphicon-time"></i>2016.03.31 21:55
+							<i class="glyphicon glyphicon-user"></i> ${i.WRITER}
+							<i class="glyphicon glyphicon-comment"></i> [ëŒ“ê¸€ìˆ˜]
+							<i class="glyphicon glyphicon-ok"></i>[ìŠ¤í¬ëž© ìˆ˜: ${i.SCRAPCNT}]
+							<i class="glyphicon glyphicon-hit"></i> [ì¡°íšŒìˆ˜: ${i.HIT}]
+							<i class="glyphicon glyphicon-time"></i>${i.regdate}
 						</p>
 					</div>
 					</div>
 				</a>
+				</c:forEach>
 			</div>
 			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<%--<div class="col-md-8">
 				<ul class="pagination">
-					<li><a href="#">ÀÌÀü</a></li>
+					<li><a href="#">ì´ì „</a></li>
 					<li><a href="#">1</a></li>
 					<li class="active"><a href="#">2</a></li>
 					<li><a href="#">3</a></li>
 					<li><a href="#">4</a></li>
-					<li><a href="#">.´õº¸±â.</a></li>
+					<li><a href="#">.ë”ë³´ê¸°.</a></li>
 					<li><a href="#">19</a></li>
-					<li><a href="#">´ÙÀ½</a></li>
+					<li><a href="#">ë‹¤ìŒ</a></li>
 				</ul>
-			</div>
+			</div>--%>
 		</div>
 	</div>
 	</div>

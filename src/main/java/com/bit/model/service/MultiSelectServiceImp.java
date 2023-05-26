@@ -91,6 +91,38 @@ public class MultiSelectServiceImp implements MultiSelectService{
 	public void updateFirstEmotionCnt(HashMap<String, Object> map) {
 		MultiSelectDaoImp.getMultiSelectDao().updateFirstEmotionCnt(map);
 	}
+
+	@Override
+	public void insertScrap(HashMap<String, String> map) {
+		MultiSelectDaoImp.getMultiSelectDao().insertScrap(map);
+
+	}
+
+	@Override
+	public String selectScrap(HashMap<String, String> map) {
+		return MultiSelectDaoImp.getMultiSelectDao().selectScrap(map);
+	}
+
+	@Override
+	public void updateScarpCnt(int no) {
+		MultiSelectDaoImp.getMultiSelectDao().updateScarpCnt(no);
+	}
+
+
+	@Override
+	public void deleteScrap(HashMap<String, String> map) {
+		MultiSelectDaoImp.getMultiSelectDao().deleteScrap(map);
+	}
+
+	@Override
+	public void deleteScrapCnt(int no) {
+		MultiSelectDaoImp.getMultiSelectDao().deleteScrapCnt(no);
+	}
+
+	@Override
+	public List<BoardVO> selectMyboard(String id) {
+		return MultiSelectDaoImp.getMultiSelectDao().selectMyboard(id);
+	}
 }
 
 

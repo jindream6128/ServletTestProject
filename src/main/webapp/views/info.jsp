@@ -96,6 +96,29 @@ $(function (){
 			}
 		})
 	});
+	$("#scrap").click(function (){
+		$.ajax({
+			url:'${pageContext.request.contextPath}/scrap.do',
+			type:'POST',
+			data:{
+				"cmd":"scrap","id":"${id}", "no":${info.NO}
+			},
+			success:function (data){
+				if(data.trim() == "add"){
+					alert("스크랩 완료하였습니다")
+					location.reload();
+				}
+				if(data.trim()=="delete"){
+					alert("스크랩 목록에서 제거하였습니다")
+					location.reload();
+				}
+			},
+			error:function (){
+				console.log("error");
+			}
+		})
+
+	})
 });
 </script>
 
@@ -132,9 +155,9 @@ $(function (){
 				<div class="board-meta"
 					style="font-weight: 400; font-size: 1.2rem; color: #404040">
 					<p>
-						<i class="glyphicon glyphicon-user"></i> ${nickname}
-						<i class="glyphicon glyphicon-comment"></i> 0
-						<i class="glyphicon glyphicon-ok"></i> 20 
+						<i class="glyphicon glyphicon-user"></i> ${info.WRITER}
+						<i class="glyphicon glyphicon-comment"></i> [댓글 수]
+						<i class="glyphicon glyphicon-ok"></i> ${info.SCRAPCNT}
 						<i class="glyphicon glyphicon-time"></i> ${info.regdate}
 					    <i class="glyphicon glyphicon-thumbs-up"></i> ${info.LIKECNT}
 						<i class="glyphicon glyphicon-thumbs-down"></i> ${info.HATECNT}
@@ -160,7 +183,7 @@ $(function (){
 				<a href="${pageContext.request.contextPath}/views/Password.jsp?job=modify&no=${info.NO}" class="btn btn-default btn-xs">수정</a>
 				<a href="${pageContext.request.contextPath}/views/Password.jsp?job=del&no=${info.NO}" class="btn btn-default btn-xs">삭제</a>
 				<a href="#" class="btn btn-default btn-xs">답변</a>
-				<a href="#" class="btn btn-default btn-xs">스크랩</a> 
+				<a class="btn btn-default btn-xs" id="scrap">스크랩</a>
 			</div>
 			<div class="clear"></div>
 		</div>

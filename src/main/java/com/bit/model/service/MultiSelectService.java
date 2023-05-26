@@ -49,4 +49,21 @@ public interface MultiSelectService {
     public void updateEmotionAction(HashMap<String,Object> map);
     //최초의 조회수 올릴때
     public void updateFirstEmotionCnt(HashMap<String,Object>map);
+
+    //스크랩 테이블에 id랑 no넣기
+    public void insertScrap(HashMap<String,String> map);
+
+    //id랑 no로 테이블 찾기
+    public String selectScrap(HashMap<String,String> map);
+    //no로 게시글 scrap횟수 늘리기
+    public void updateScarpCnt(int no);
+
+    //db에 해단 글을 스크랩했을때 삭제하기
+    public void deleteScrap(HashMap<String,String> map);
+
+    //cnt줄이기
+    public void deleteScrapCnt(int no);
+
+    //Scrap한 글 땡겨오기
+    public List<BoardVO> selectMyboard(String id);
 }

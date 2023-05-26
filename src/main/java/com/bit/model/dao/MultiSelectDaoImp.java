@@ -243,6 +243,89 @@ public class MultiSelectDaoImp implements MultiSelectDao{
 		}
 	}
 
+	@Override
+	public void insertScrap(HashMap<String, String> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try{
+			sqlSession.insert("com.bit.vo.insertScrap", map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public String selectScrap(HashMap<String, String> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		String str=null;
+		try{
+			str = sqlSession.selectOne("com.bit.vo.selectScrap",map);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		return str;
+	}
+
+	@Override
+	public void updateScarpCnt(int no) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.updateScarpCnt",no);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void deleteScrap(HashMap<String, String> map) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.deleteScrap",map);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public void deleteScrapCnt(int no) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		try {
+			sqlSession.update("com.bit.vo.deleteScrapCnt",no);
+			sqlSession.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally {
+			sqlSession.close();
+		}
+	}
+
+	@Override
+	public List<BoardVO> selectMyboard(String id) {
+		SqlSession sqlSession = sessionFactory.openSession();
+		List<BoardVO> boardVO = null;
+		try{
+			boardVO = sqlSession.selectList("com.bit.vo.selectMyboard",id);
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();;
+		}
+		return boardVO;
+	}
 }
 
 

@@ -26,14 +26,17 @@
         VALUES (#{TITLE},#{CATEGORY},#{WRITER},#{PASSWORD},#{CONTENTS},#{FILENAME})
     </insert>
 
-    <select id="selectAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-        select * from
+<!--    <select id="selectAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">-->
+    <select id = "selectAll" parameterType="java.util.HashMap" resultType="com.bit.vo.BoardVO">
+        select *, if( date_format(regdate, '%Y-%m-%d')=date_format(curdate(), '%Y-%m-%d')
+        ,'Y'
+        ,'N') as 'newChk' from
                      (select @rownum:=@rownum+1 rownumber, BOARD.*
                       from BOARD
                       where (@rownum:=0)=0
                       <if test="qeury != null">
                           and ${query} LIKE CONCAT('%', #{data}, '%')
-                      </if> order by no asc) rownumber
+                      </if> order by NO desc) rownumber
         where rownumber between #{start} and #{end}
     </select>
 
@@ -111,6 +114,33 @@ set TITLE=#{TITLE}, CATEGORY=#{CATEGORY}, WRITER=#{WRITER}, PASSWORD=#{PASSWORD}
         </if>
     </update>
 
+    <insert id="insertScrap" parameterType="java.util.HashMap">
+        INSERT INTO SCRAP(BOARD_NO, USER_ID) values (#{no}, #{id});
+    </insert>
+
+    <select id="selectScrap" parameterType="java.util.HashMap" resultType="java.lang.String">
+        SELECT USER_ID FROM SCRAP WHERE BOARD_NO = #{no} AND USER_ID = #{id}
+    </select>
+
+    <update id="updateScarpCnt" parameterType="int">
+        UPDATE BOARD
+        SET SCRAPCNT = SCRAPCNT + 1
+        WHERE NO = #{no};
+    </update>
+
+    <delete id="deleteScrap" parameterType="java.util.HashMap">
+        DELETE from SCRAP WHERE BOARD_NO = #{no} AND USER_ID = #{id}
+    </delete>
+
+    <update id="deleteScrapCnt" parameterType="int">
+        UPDATE BOARD
+        SET SCRAPCNT = SCRAPCNT-1
+        WHERE NO = #{no};
+    </update>
+
+   <select id="selectMyboard" parameterType="java.lang.String" resultType="java.util.HashMap">
+       select * from BOARD WHERE NO in (select BOARD_NO from SCRAP WHERE USER_ID=#{id})
+   </select>
 
 </mapper> <!--여기까지 매퍼-->
 

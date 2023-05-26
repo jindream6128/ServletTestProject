@@ -47,6 +47,12 @@ public class MapperServlet {
 			case "emotion":
 				processController = new EmotionController("",false);
 				break;
+			case "scrap":
+				processController = new ScrapController("",false);
+				break;
+			case "mypage":
+				processController = new MypageController("views/mypage.jsp",false);
+				break;
 		}
 
 		

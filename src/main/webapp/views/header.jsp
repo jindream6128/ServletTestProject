@@ -15,20 +15,20 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>1
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="signin.jsp">Start Simple Web</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect">Start Simple Web</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="board.jsp">Board</a></li>
+					<li><a href="${pageContext.request.contextPath}/listSelect.do?cmd=listSelect">Board</a></li>
 					<li><a href="#">LogOut</a></li>
-					<li><a href="signin.jsp">LogIn</a></li>
-					<li><a href="mypage.jsp">Mypage</a></li>
+					<li><a href="${pageContext.request.contextPath}/views/signin.jsp">LogIn</a></li>
+					<li><a href="${pageContext.request.contextPath}/mypage.do?cmd=mypage&id=${id}">Mypage</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

@@ -13,6 +13,15 @@ public class BoardVO {
     private int LIKECNT;
     private int HATECNT;
     private int SCRAPCNT;
+    private String newChk;
+
+    public String getNewChk() {
+        return newChk;
+    }
+
+    public void setNewChk(String newChk) {
+        this.newChk = newChk;
+    }
 
     public int getLIKECNT() {
         return LIKECNT;
@@ -110,6 +119,8 @@ public class BoardVO {
         this.regdate = regdate;
     }
 
+    public BoardVO() {
+    }
 
     public BoardVO(String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME) {
         super();
@@ -172,6 +183,22 @@ public class BoardVO {
         this.HIT = HIT;
     }
 
+    public BoardVO(int NO, String TITLE, String CATEGORY, String WRITER, String PASSWORD, String CONTENTS, String FILENAME, String regdate, int HIT, int LIKECNT, int HATECNT, int SCRAPCNT, String newChk) {
+        this.NO = NO;
+        this.TITLE = TITLE;
+        this.CATEGORY = CATEGORY;
+        this.WRITER = WRITER;
+        this.PASSWORD = PASSWORD;
+        this.CONTENTS = CONTENTS;
+        this.FILENAME = FILENAME;
+        this.regdate = regdate;
+        this.HIT = HIT;
+        this.LIKECNT = LIKECNT;
+        this.HATECNT = HATECNT;
+        this.SCRAPCNT = SCRAPCNT;
+        this.newChk = newChk;
+    }
+
     @Override
     public String toString() {
         return "BoardVO{" +
@@ -184,6 +211,10 @@ public class BoardVO {
                 ", FILENAME='" + FILENAME + '\'' +
                 ", regdate='" + regdate + '\'' +
                 ", HIT=" + HIT +
+                ", LIKECNT=" + LIKECNT +
+                ", HATECNT=" + HATECNT +
+                ", SCRAPCNT=" + SCRAPCNT +
+                ", newChk='" + newChk + '\'' +
                 '}';
     }
 }
